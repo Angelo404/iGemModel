@@ -9,6 +9,10 @@ import csv
 from time import time
 
 
+def write_to_file(genome, f='allAvirus4'):
+    with open(f, 'w') as data:
+        data.write(genome)
+
 def open_file(f='seq'):
     s = ''
     with open(f, 'r') as data:
@@ -33,6 +37,41 @@ def read_csv(f='main.csv'):
 def crop_seq(seq,start=10,end=-3):
     return seq[len(seq)-start+end:end]
 
+def write_to_fasta(file_name, id, seq):
+    with open(file_name, "a") as f:
+        f.write('>{}\n'.format(id))
+        f.write('{}\n'.format(seq))
+
+
+def reverse_file(file_name):
+    s = ''
+    with open(file_name, "r") as f_in:
+
+        for l in f_in.readlines():
+            s += l.rstrip()
+
+    with open(file_name+'neg', "w") as f_out:
+        f_out.write(s[::-1])
+
+def complement(file_name):
+    s = ''
+    new_string = ''
+    with open(file_name, "r") as f_in:
+        for l in f_in.readlines():
+            s += l.rstrip()
+
+    with open(file_name + 'compl', "w") as f_out:
+        for c in s:
+            if c == 'G':
+                new_string += 'C'
+            elif c == 'C':
+                new_string += 'G'
+            elif c == 'A':
+                new_string += 'T'
+            elif c == 'T':
+                new_string += 'A'
+        f_out.write(new_string)
+
 if __name__ == '__main__':
-    test = 'QWERTYUIOPASDFGHJKLZXCVBNM'
-    print crop_seq(test)
+    complement('jj50neg')
+    complement('SK1neg')

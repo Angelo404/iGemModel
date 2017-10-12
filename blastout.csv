@@ -1,0 +1,61 @@
+BLASTN 2.2.31+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+
+Database: lactis.fna
+           1 sequences; 639,030 total letters
+
+
+
+Query= four
+
+Length=20
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+  AM406671.1 Lactococcus lactis subsp. cremoris MG1363, complete ...  31.9    8e-04
+
+
+
+Query_1  1       TTAGATGATGTTCAATTGGG  20
+0        655     .................     671
+0        508440     ..G.............   508455
+0        206511  ............          206522
+0        231303     ............       231314
+0        152940          ...........   152930
+0        214140           ...........  214150
+0        244816           ...........  244826
+0        332792         ...........    332802
+0        428987      ...........       428997
+0        439977       ...........      439987
+0        606633     ................   606616
+                               \     
+                               |     
+                              TC
+
+
+Lambda      K        H
+   0.634    0.408    0.912 
+
+Gapped
+Lambda      K        H
+   0.625    0.410    0.780 
+
+Effective search space used: 3195075
+
+
+  Database: lactis.fna
+    Posted date:  Jul 19, 2017  11:58 AM
+  Number of letters in database: 639,030
+  Number of sequences in database:  1
+
+
+
+Matrix: blastn matrix 2 -3
+Gap Penalties: Existence: 5, Extension: 2

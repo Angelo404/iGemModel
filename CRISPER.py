@@ -20,6 +20,7 @@ class CRISPER():
         """
         self.__bps = break_points
         self.__sl = seq_len
+        self.__complete_data = []
 
     def break_genome(self, genome_seq):
         """
@@ -33,7 +34,6 @@ class CRISPER():
             for separator in separators:
                 spacer = genome_seq[separator - self.__sl:separator + len(bp)]
                 genomes.append(VirusGenome(spacer, bp, separator))
-
         return genomes
 
     def break_genomes(self, genome_seq):
@@ -46,7 +46,27 @@ class CRISPER():
         for g in genome_seq:
             tmp_genome = self.break_genome(g)
             for s in tmp_genome:
-                print s
+                self.__complete_data.append(s)
+
+    def get_data(self):
+        return self.__complete_data
+
+    def clear_data(self):
+        self.__complete_data = []
+
+    def create_neg(self, sequence):
+        sequence = sequence[::-1]
+        new_string = ''
+        for c in sequence:
+            if c == 'G':
+                new_string += 'C'
+            elif c == 'C':
+                new_string += 'G'
+            elif c == 'A':
+                new_string += 'T'
+            elif c == 'T':
+                new_string += 'A'
+        return new_string
 
 
 if __name__ == '__main__':
@@ -55,3 +75,5 @@ if __name__ == '__main__':
     data = open_file()
     print data
     c.break_genomes([data])
+    for _ in c.get_data():
+        print _
