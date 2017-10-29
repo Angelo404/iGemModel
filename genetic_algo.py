@@ -151,7 +151,7 @@ def selection(population):
 
 if __name__ == '__main__':
 
-    for test in range(10):
+    for test in range(1):
         print 'Test No: {}'.format(test)
         sk1_raw = open_file('SK1')
         jj50_raw = open_file('jj50')
@@ -176,27 +176,8 @@ if __name__ == '__main__':
         rnd_spacers2 = c.get_data()
         c.clear_data()
 
-        all_spacers = [sk1_spacers, jj50_spacers, rnd_spacers, rnd_spacers2]
-        all_spacers_dict = {'sk1': sk1_spacers, 'jj50':jj50_spacers, 'rnd': rnd_spacers, 'rnd2': rnd_spacers2}
-
-        # c.break_genomes([utils.open_file('allAvirus'), utils.open_file('allAviruscompl')])
-        # rnda1 = c.get_data()
-        # c.clear_data()
-        #
-        # c.break_genomes([utils.open_file('allAvirus2'), utils.open_file('allAvirus2compl')])
-        # rnda2 = c.get_data()
-        # c.clear_data()
-        #
-        # c.break_genomes([utils.open_file('allAvirus3'), utils.open_file('allAvirus3compl')])
-        # rnda3 = c.get_data()
-        # c.clear_data()
-        #
-        # c.break_genomes([utils.open_file('allAvirus4'), utils.open_file('allAvirus4compl')])
-        # rnda4 = c.get_data()
-        # c.clear_data()
-        #
-        # all_spacers = [rnda1, rnda2, rnda3, rnda4]
-        # all_spacers_dict = {'rnda1': rnda1, 'rnda2':rnda2, 'rnda3': rnda3, 'rnda4': rnda4}
+        all_spacers = [sk1_spacers, jj50_spacers, rnd_spacers]
+        all_spacers_dict = {'sk1': sk1_spacers, 'jj50':jj50_spacers, 'rnd': rnd_spacers}
 
         agents = []
 
@@ -208,10 +189,10 @@ if __name__ == '__main__':
             tmp_a.add_virus('sk1')
             tmp_a.add_virus('jj50')
             tmp_a.add_virus('rnd')
-            tmp_a.add_virus('rnd2')
             agents.append(tmp_a)
 
-        for epoch in range(10):
+        for epoch in range(50):
+            total = 0
             print 'generation number: {}'.format(epoch)
             for agent in agents:
                 agent.cmp(all_spacers_dict)
@@ -220,8 +201,9 @@ if __name__ == '__main__':
             agents.sort()
             agents = selection(agents)
             agents = multiply(agents, 4)
-            if epoch ==1:
-                print agents[0]
+            for agent in agents[:4]:
+                total += agent.fitness
 
+            print total
         for agent in agents[:4]:
             print agent

@@ -15,6 +15,10 @@ class Genome(object):
     def get_dna(self, start=0, end=-1):
         return self.__seq[start:end]
 
+    @property
+    def DNA(self):
+        return self.get_dna()
+
     def get_spacer_wout_pam(self):
         return self.__seq[:-3]
 

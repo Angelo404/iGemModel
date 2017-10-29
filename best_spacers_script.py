@@ -40,7 +40,7 @@ for _ in lib:
     spacers = []
     for s in tmp_spacers:
         spacers.append(s.DNA[17:-3])
-        neg_spacers.append(create_neg()s.DNA[17:-3])
+        neg_spacers.append(create_neg(s.DNA[17:-3]))
     sequences.append({'name': _, 'raw': raw_source, 'spacers': spacers, 'neg_spacers': neg_spacers})
 
 print 'here'
@@ -125,50 +125,3 @@ for seq in sequences:
 
 
 exit()
-#
-# for sk1_spacer in sk1_spacers:
-#     min_dist = 100
-#     min_sk1_seq = ''
-#     min_heler_seq = ''
-#     seq_2 = sk1_spacer.DNA[17:-3]
-#     for heler_spacer in heler_spacers:
-#         seq_1 = heler_spacer.DNA[17:-3]
-#         heler_sk1_dist = hamming_distance(seq_1, seq_2)
-#         if heler_sk1_dist < min_dist:
-#             min_h_pos = heler_spacer.get_pos()
-#             min_s_pos = sk1_spacer.get_pos()
-#             min_sk1_seq = seq_2
-#             min_heler_seq = seq_1
-#             min_dist = heler_sk1_dist
-#     print 'sk1: {} - heler: {} - dist: {} - heler_pos: {} - sk1_pos: {}'.format(
-#         min_sk1_seq, min_heler_seq, min_dist, min_h_pos, min_s_pos)
-#     write_to_fasta('sk1_fasta', 'sk1_pos_{}'.format(min_s_pos),min_sk1_seq)
-#
-# #
-# # print 'JJ50-TO-HELER'
-# #
-# for jj50_spacer in jj50_spacers:
-#     min_dist = 100
-#     min_jj50_seq = ''
-#     min_heler_seq = ''
-#     seq_2 = jj50_spacer.DNA[17:-3]
-#     for heler_spacer in heler_spacers:
-#         seq_1 = heler_spacer.DNA[17:-3]
-#         heler_jj50_dist = hamming_distance(seq_1, seq_2)
-#         if heler_jj50_dist < min_dist:
-#             min_h_pos = heler_spacer.get_pos()
-#             min_j_pos = jj50_spacer.get_pos()
-#             min_jj50_seq = seq_2
-#             min_heler_seq = seq_1
-#             min_dist = heler_jj50_dist
-#     print 'jj50: {} - heler: {} - dist: {} - heler_pos: {} - jj50_pos: {}'.format(
-#         min_jj50_seq, min_heler_seq, min_dist, min_h_pos, min_j_pos)
-#     write_to_fasta('jj50_fasta', 'jj50_pos_{}'.format(min_j_pos),min_jj50_seq)
-# #
-# # # print 'mean ham heler-sk1: {}'.format((heler_sk1_dist*1.0)/(heler_sk1_count*1.0))
-# # # print 'mean ham heler-jj50: {}'.format((heler_jj50_dist*1.0)/(heler_jj50_count*1.0))
-# #
-# #
-# # if __name__ == '__main__':
-# #     pass
-#
